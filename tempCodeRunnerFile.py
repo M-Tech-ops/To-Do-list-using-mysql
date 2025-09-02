@@ -1,0 +1,1 @@
+lablephoto=PhotoImage(file='smileythumb.png')
