@@ -1,19 +1,19 @@
 import mysql.connector
 from tkinter import *
 from tkinter import messagebox
-from Modules import CreateTable 
+# from Modules import CreateTable 
 # Windows=Serves as a container to hold or contain widgets
 #Widgets=GUI ELEMENTS:buttons,textboxes,labels,images
 count=0
 def submitentry():
     Entry_1=entry.get()
-    try:
-        CreateTable(Entry_1)
-        print(Entry_1+" table has been created")
-        messagebox.showinfo("Sucess",f"table {Entry_1} has been created")
-    except Exception as e:
-        print("Error:",e)
-        messagebox.showerror(f"Error Failed to create table {e}")
+    # try:
+    #     CreateTable(Entry_1)
+    #     print(Entry_1+" table has been created")
+    #     messagebox.showinfo("Sucess",f"table {Entry_1} has been created")
+    # except Exception as e:
+    #     print("Error:",e)
+    #     messagebox.showerror(f"Error Failed to create table {e}")
 def clickresponse():
     global count
     count+=1
@@ -28,7 +28,6 @@ def MainWindow():       #main window
     window.iconphoto(True,icon)
     window.config(background="#292726")
 #THIS IS HOW YOU ADD LABELING
-lablephoto=PhotoImage(file='smileythumb.png')
 def Labeler(picture):
     label = Label(window,text="Hello world",
               background="#c6ff0a",
@@ -63,12 +62,29 @@ def ent():
                 fg="red",
                 bg="blue")
     entry.pack(side='bottom')
+check_button_val=IntVar()
+def check_button_reaction():
+    if check_button_val.get()==1:
+        print("you agree")
+    else:
+        print("you disagree")
+def checkbutton(input_text=None):
+
+    check_button=Checkbutton(window,
+                             text=str(input_text) if input_text is not None else None,
+                             variable=check_button_val,
+                             onvalue=1,
+                             offvalue=0,
+                             command=check_button_reaction,
+                             font="Arial",
+                             size=20)
+    check_button.pack()
 MainWindow()
-Labeler(lablephoto)
 #button("CLICK ME",clickresponse,buttphoto)
 ent()
 submit_button=button("SUBMIT",submitentry)
-submit_button.pack(side='left')
+submit_button.pack(side='top')
+checkbutton("ENTER")
 window.mainloop()#listen for events and place a window on screen
 
 
