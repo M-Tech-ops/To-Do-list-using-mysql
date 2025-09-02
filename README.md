@@ -1,3 +1,3 @@
-#this is my local repo for TODO list
+# this is my local repo for TODO list
 <br>
-#THIS USES TKINTER, MYSQL
+# THIS USES TKINTER, MYSQL
