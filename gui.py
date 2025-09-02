@@ -22,19 +22,19 @@ def clickresponse():
 #Creating a window
 window = Tk()#instanciate an instance of window
 def MainWindow():       #main window 
-    window.geometry("420x420")          
+    window.geometry("1280x720")          
     window.title("To do")
     icon = PhotoImage(file='smileythumb.png')
     window.iconphoto(True,icon)
     window.config(background="#292726")
+    window.resizable(False,False)
 #THIS IS HOW YOU ADD LABELING
-def Labeler(picture):
-    label = Label(window,text="Hello world",
-              background="#c6ff0a",
-              font=('Arial',40,'underline','italic','bold'),fg="#ff0a0a",relief=RAISED,bd=9,
-              padx=5,pady=5,image=picture,
+def Labeler(picture=None):
+    label = Label(window,
+              font=('Arial',40,'italic','bold'),fg="#000000",bg="#DF5D1C",relief='flat',bd=9,
+              padx=5,pady=5,image=picture if picture is not None else None,
               compound='left')
-    # label.place(x=0,y=0)
+    label.place(x=640,y=310)
     label.pack()
 #THIS IS HOW TO ADD BUTTONS
 
@@ -76,15 +76,15 @@ def checkbutton(input_text=None):
                              onvalue=1,
                              offvalue=0,
                              command=check_button_reaction,
-                             font="Arial",
-                             size=20)
+                             font=("Arial",20,'bold','underline'))
     check_button.pack()
 MainWindow()
+Labeler()
 #button("CLICK ME",clickresponse,buttphoto)
-ent()
-submit_button=button("SUBMIT",submitentry)
-submit_button.pack(side='top')
-checkbutton("ENTER")
+# ent()
+# submit_button=button("SUBMIT",submitentry)
+# submit_button.pack(side='top')
+# checkbutton("ENTER")
 window.mainloop()#listen for events and place a window on screen
 
 
